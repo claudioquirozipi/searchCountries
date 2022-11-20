@@ -1,9 +1,14 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+import { NgModule } from '@angular/core';
+
 import { ByCapitalComponent } from './pages/by-capital/by-capital.component';
 import { ByCountryComponent } from './pages/by-country/by-country.component';
 import { ByRegionComponent } from './pages/by-region/by-region.component';
 import { CountryComponent } from './pages/country/country.component';
+import { AppRoutingModule } from '../app-routing.module';
+import { CountryTableComponent } from './components/country-table/country-table.component';
+import { CountryInputComponent } from './components/country-input/country-input.component';
 
 @NgModule({
   declarations: [
@@ -11,8 +16,10 @@ import { CountryComponent } from './pages/country/country.component';
     ByCountryComponent,
     ByRegionComponent,
     CountryComponent,
+    CountryTableComponent,
+    CountryInputComponent,
   ],
-  imports: [CommonModule],
+  imports: [CommonModule, FormsModule, AppRoutingModule],
   exports: [
     ByCapitalComponent,
     ByCountryComponent,
