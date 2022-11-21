@@ -13,11 +13,13 @@ export class ByCountryComponent implements OnInit {
   term: string = '';
   isError: boolean = false;
   countries: Country[] = [];
+  countriesSuggested: Country[] = [];
 
   ngOnInit(): void {}
 
   search(term: string) {
     this.term = term;
+    this.countriesSuggested = [];
     this.isError = false;
     this.countryService.searchCountry(this.term).subscribe(
       (data) => {
@@ -29,7 +31,11 @@ export class ByCountryComponent implements OnInit {
       }
     );
   }
-  suggestion(event: any) {
+  suggestion(term: string) {
     this.isError = false;
+    this.countryService.searchCountry(term).subscribe(
+      (country) => (this.countriesSuggested = country.splice(0, 3)),
+      (_) => (this.countriesSuggested = [])
+    );
   }
 }

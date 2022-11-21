@@ -10,7 +10,14 @@
     ></app-country-input>
   </div>
 </div>
-
+<ul *ngFor="let country of countriesSuggested" class="list-group">
+  <li
+    class="list-group-item list-group-item-action"
+    (click)="search(country.name.common)"
+  >
+    {{ country.name.common }}
+  </li>
+</ul>
 <hr />
 <div *ngIf="isError" class="alert alert-danger">
   No se encontró nada con el termino: {{ term }}
